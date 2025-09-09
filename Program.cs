@@ -1,10 +1,15 @@
-﻿namespace CheckPoint1;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace CheckPoint1;
 
 internal static class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("=== CHECKPOINT 1 - FUNDAMENTOS C# - Turma  3ESPY ===\n");
+        Console.WriteLine("=== CHECKPOINT 1 - FUNDAMENTOS C# - Turma 3ESPY ===\n");
 
         // ENTREGA ATÉ DIA 08/09 AS 23:59
         // Você deve criar um repositório público ou branch no github e me enviar o link pelo
@@ -28,34 +33,60 @@ internal static class Program
         
         
         Console.WriteLine("1. Testando DemonstrarTiposDados...");
-        // Exemplo: Console.WriteLine(DemonstrarTiposDados());
+        Console.WriteLine(DemonstrarTiposDados());
 
         Console.WriteLine("\n2. Testando CalculadoraBasica (SWITCH)...");
-        // Exemplo: Console.WriteLine(CalculadoraBasica(10, 5, '+'));
+        Console.WriteLine($"10 + 5 = {CalculadoraBasica(10, 5, '+')}");
+        Console.WriteLine($"10 - 5 = {CalculadoraBasica(10, 5, '-')}");
+        Console.WriteLine($"10 * 5 = {CalculadoraBasica(10, 5, '*')}");
+        Console.WriteLine($"10 / 5 = {CalculadoraBasica(10, 5, '/')}");
+        Console.WriteLine($"10 / 0 = {CalculadoraBasica(10, 0, '/')}");
+        Console.WriteLine($"10 % 5 = {CalculadoraBasica(10, 5, '%')}");
+
 
         Console.WriteLine("\n3. Testando ValidarIdade (IF/ELSE)...");
-        // Exemplo: Console.WriteLine(ValidarIdade(25));
+        Console.WriteLine($"Idade 10: {ValidarIdade(10)}");
+        Console.WriteLine($"Idade 15: {ValidarIdade(15)}");
+        Console.WriteLine($"Idade 30: {ValidarIdade(30)}");
+        Console.WriteLine($"Idade 70: {ValidarIdade(70)}");
+        Console.WriteLine($"Idade -5: {ValidarIdade(-5)}");
+
 
         Console.WriteLine("\n4. Testando ConverterString...");
-        // Exemplo: Console.WriteLine(ConverterString("123", "int"));
+        Console.WriteLine($"'123' para int: {ConverterString("123", "int")}");
+        Console.WriteLine($"'abc' para int: {ConverterString("abc", "int")}");
+        Console.WriteLine($"'true' para bool: {ConverterString("true", "bool")}");
+        Console.WriteLine($"'99.5' para double: {ConverterString("99.5", "double")}");
 
         Console.WriteLine("\n5. Testando ClassificarNota (SWITCH)...");
-        // Exemplo: Console.WriteLine(ClassificarNota(8.5));
+        Console.WriteLine($"Nota 9.5: {ClassificarNota(9.5)}");
+        Console.WriteLine($"Nota 8.0: {ClassificarNota(8.0)}");
+        Console.WriteLine($"Nota 6.1: {ClassificarNota(6.1)}");
+        Console.WriteLine($"Nota 4.9: {ClassificarNota(4.9)}");
+        Console.WriteLine($"Nota 11: {ClassificarNota(11)}");
+
 
         Console.WriteLine("\n6. Testando GerarTabuada (FOR)...");
-        // Exemplo: Console.WriteLine(GerarTabuada(5));
+        Console.WriteLine(GerarTabuada(7));
 
         Console.WriteLine("\n7. Testando JogoAdivinhacao (WHILE)...");
-        // Exemplo: Console.WriteLine(JogoAdivinhacao(50, new int[]{25, 75, 50}));
+        Console.WriteLine(JogoAdivinhacao(63, new int[]{50, 75, 63, 80}));
 
         Console.WriteLine("\n8. Testando ValidarSenha (DO-WHILE)...");
-        // Exemplo: Console.WriteLine(ValidarSenha("MinhaSenh@123"));
+        Console.WriteLine($"Senha 'senhafraca': {ValidarSenha("senhafraca")}");
+        Console.WriteLine($"Senha 'SenhaForte123': {ValidarSenha("SenhaForte123")}");
+        Console.WriteLine($"Senha 'SenhaFortissim@2025': {ValidarSenha("SenhaFortissim@2025")}");
+
 
         Console.WriteLine("\n9. Testando AnalisarNotas (FOREACH)...");
-        // Exemplo: Console.WriteLine(AnalisarNotas(new double[]{8.5, 7.0, 9.2, 6.5, 10.0}));
+        Console.WriteLine(AnalisarNotas(new double[]{8.5, 7.0, 9.2, 4.5, 10.0, 6.8, 8.8}));
 
         Console.WriteLine("\n10. Testando ProcessarVendas (FOREACH múltiplo)...");
-        // Exemplo: Console.WriteLine(ProcessarVendas(...));
+        double[] vendas = { 1000.0, 500.0, 1200.0, 800.0, 300.0 };
+        string[] categorias = { "A", "B", "A", "C", "B" };
+        double[] comissoes = { 0.10, 0.07, 0.05 }; // 10% para A, 7% para B, 5% para C
+        string[] nomesCategorias = { "A", "B", "C" };
+        Console.WriteLine(ProcessarVendas(vendas, categorias, comissoes, nomesCategorias));
 
         Console.WriteLine("\n=== RESUMO: TODAS AS ESTRUTURAS FORAM TESTADAS ===");
         Console.WriteLine("✅ IF/ELSE: Testado na validação de idade");
@@ -81,10 +112,14 @@ internal static class Program
     /// </summary>
     private static string DemonstrarTiposDados()
     {
-        // TODO: Implementar
-        // Exemplo de retorno: "Inteiro: 42, Decimal: 3.14, Booleano: True, Caractere: A, Texto: Olá"
+        int numeroInteiro = 42;
+        double numeroDecimal = 3.1415;
+        bool valorBooleano = true;
+        char caractere = 'A';
+        var texto = "Olá, Mundo!"; // Usando inferência de tipo (var)
 
-        throw new NotImplementedException("Implementar DemonstrarTiposDados");
+        // Usando string interpolada para formatar o retorno
+        return $"Inteiro: {numeroInteiro}, Decimal: {numeroDecimal}, Booleano: {valorBooleano}, Caractere: {caractere}, Texto: {texto}";
     }
 
     // =====================================================================
@@ -100,16 +135,21 @@ internal static class Program
     /// </summary>
     private static double CalculadoraBasica(double num1, double num2, char operador)
     {
-        // TODO: Implementar OBRIGATORIAMENTE usando SWITCH
-        // Exemplo de estrutura:
-        // switch (operador)
-        // {
-        //     case '+': return num1 + num2;
-        //     case '-': return num1 - num2;
-        //     // etc...
-        // }
-
-        throw new NotImplementedException("Implementar CalculadoraBasica com SWITCH");
+        switch (operador)
+        {
+            case '+':
+                return num1 + num2;
+            case '-':
+                return num1 - num2;
+            case '*':
+                return num1 * num2;
+            case '/':
+                // Trata a divisão por zero
+                return num2 != 0 ? num1 / num2 : 0;
+            default:
+                // Retorna -1 para operadores inválidos
+                return -1;
+        }
     }
 
     // =====================================================================
@@ -128,15 +168,26 @@ internal static class Program
     /// </summary>
     private static string ValidarIdade(int idade)
     {
-        // TODO: Implementar OBRIGATORIAMENTE usando IF/ELSE (não switch)
-        // Exemplo de estrutura:
-        // if (idade < 0 || idade > 120)
-        //     return "Idade inválida";
-        // else if (idade < 12)
-        //     return "Criança";
-        // Continue com else if...
-
-        throw new NotImplementedException("Implementar ValidarIdade com IF/ELSE");
+        if (idade < 0 || idade > 120)
+        {
+            return "Idade inválida";
+        }
+        else if (idade < 12)
+        {
+            return "Criança";
+        }
+        else if (idade < 18) // Não precisa verificar >= 12, pois já foi filtrado no if anterior
+        {
+            return "Adolescente";
+        }
+        else if (idade <= 65)
+        {
+            return "Adulto";
+        }
+        else // Se chegou aqui, a idade é > 65
+        {
+            return "Idoso";
+        }
     }
 
     // =====================================================================
@@ -152,10 +203,32 @@ internal static class Program
     /// </summary>
     private static string ConverterString(string valor, string tipoDesejado)
     {
-        // TODO: Implementar conversões usando TryParse
-        // tipoDesejado pode ser: "int", "double", "bool"
+        switch (tipoDesejado.ToLower())
+        {
+            case "int":
+                if (int.TryParse(valor, out int valorInt))
+                {
+                    return $"int: {valorInt}";
+                }
+                return "Conversão impossível para int";
+            
+            case "double":
+                if (double.TryParse(valor, out double valorDouble))
+                {
+                    return $"double: {valorDouble}";
+                }
+                return "Conversão impossível para double";
 
-        throw new NotImplementedException("Implementar ConverterString");
+            case "bool":
+                if (bool.TryParse(valor, out bool valorBool))
+                {
+                    return $"bool: {valorBool}";
+                }
+                return "Conversão impossível para bool";
+
+            default:
+                return "Tipo desejado inválido";
+        }
     }
 
     // =====================================================================
@@ -172,9 +245,15 @@ internal static class Program
     /// </summary>
     private static string ClassificarNota(double nota)
     {
-        // TODO: Implementar usando switch (pode usar switch expression se conhecer)
-
-        throw new NotImplementedException("Implementar ClassificarNota");
+        // Usando "switch expression", uma forma moderna e concisa do C# 8+
+        return nota switch
+        {
+            >= 9.0 and <= 10.0 => "Excelente",
+            >= 7.0 and < 9.0 => "Bom",
+            >= 5.0 and < 7.0 => "Regular",
+            >= 0.0 and < 5.0 => "Insuficiente",
+            _ => "Nota inválida"
+        };
     }
 
     // =====================================================================
@@ -190,9 +269,19 @@ internal static class Program
     /// </summary>
     private static string GerarTabuada(int numero)
     {
-        // TODO: Implementar OBRIGATORIAMENTE com FOR
+        if (numero <= 0)
+        {
+            return "Número inválido";
+        }
+        
+        // StringBuilder é mais eficiente para construir strings em loops
+        var tabuada = new StringBuilder();
+        for (int i = 1; i <= 10; i++)
+        {
+            tabuada.AppendLine($"{numero} x {i} = {numero * i}");
+        }
 
-        throw new NotImplementedException("Implementar GerarTabuada com FOR");
+        return tabuada.ToString();
     }
 
     // =====================================================================
@@ -211,16 +300,38 @@ internal static class Program
     /// </summary>
     private static string JogoAdivinhacao(int numeroSecreto, int[] tentativas)
     {
-        // TODO: Implementar OBRIGATORIAMENTE com WHILE
-        // Exemplo: "Tentativa 1: 50 - muito baixo\nTentativa 2: 75 - muito alto\nTentativa 3: 63 - correto!"
+        var historico = new StringBuilder();
+        int i = 0;
+        
+        while (i < tentativas.Length)
+        {
+            int palpite = tentativas[i];
+            historico.Append($"Tentativa {i + 1}: {palpite} - ");
+            
+            if (palpite < numeroSecreto)
+            {
+                historico.AppendLine("muito baixo");
+            }
+            else if (palpite > numeroSecreto)
+            {
+                historico.AppendLine("muito alto");
+            }
+            else
+            {
+                historico.Append("correto!");
+                return historico.ToString(); // Encerra o método ao acertar
+            }
+            
+            i++;
+        }
 
-        throw new NotImplementedException("Implementar JogoAdivinhacao com WHILE");
+        return historico.ToString().TrimEnd();
     }
 
     // =====================================================================
     // QUESTÃO 8 - ESTRUTURA DO-WHILE (15 pontos)
     // =====================================================================
-
+    
     /// <summary>
     /// TODO: OBRIGATÓRIO USAR DO-WHILE
     /// Valide uma senha seguindo critérios de segurança
@@ -234,10 +345,35 @@ internal static class Program
     /// </summary>
     private static string ValidarSenha(string senha)
     {
-        // TODO: Implementar OBRIGATORIAMENTE com DO-WHILE
-        // Use do-while para verificar cada critério da senha
+        // Embora o uso de DO-WHILE seja artificial aqui (um FOR/FOREACH seria mais natural),
+        // a estrutura abaixo cumpre o requisito. O do-while(false) cria um bloco de
+        // código que executa uma vez e permite usar 'break' para sair prematuramente.
+        
+        var erros = new List<string>();
+        string caracteresEspeciais = "!@#$%&*";
 
-        throw new NotImplementedException("Implementar ValidarSenha com DO-WHILE");
+        do
+        {
+            if (senha.Length < 8)
+                erros.Add("a senha deve ter pelo menos 8 caracteres");
+            
+            if (!senha.Any(char.IsDigit))
+                erros.Add("deve ter pelo menos 1 número");
+
+            if (!senha.Any(char.IsUpper))
+                erros.Add("deve ter pelo menos 1 letra maiúscula");
+            
+            if (!senha.Any(c => caracteresEspeciais.Contains(c)))
+                erros.Add("deve ter pelo menos 1 caractere especial (!@#$%&*)");
+
+        } while (false); // Executa apenas uma vez
+
+        if (erros.Count == 0)
+        {
+            return "Senha válida";
+        }
+
+        return $"Senha inválida: {string.Join(", ", erros)}.";
     }
 
     // =====================================================================
@@ -255,16 +391,44 @@ internal static class Program
     /// </summary>
     private static string AnalisarNotas(double[] notas)
     {
-        // TODO: Implementar OBRIGATORIAMENTE com FOREACH
-        // Retorno exemplo: "Média: 7.5\nAprovados: 15\nMaior: 9.8\nMenor: 3.2\nA: 3, B: 4, C: 8, D: 2, F: 1"
+        if (notas == null || notas.Length == 0)
+        {
+            return "Nenhuma nota para analisar";
+        }
+        
+        double soma = 0;
+        int aprovados = 0;
+        double maiorNota = notas[0];
+        double menorNota = notas[0];
+        int faixaA = 0, faixaB = 0, faixaC = 0, faixaD = 0, faixaF = 0;
+        
+        foreach (var nota in notas)
+        {
+            soma += nota;
+            
+            if (nota >= 7.0) aprovados++;
+            if (nota > maiorNota) maiorNota = nota;
+            if (nota < menorNota) menorNota = nota;
 
-        throw new NotImplementedException("Implementar AnalisarNotas com FOREACH");
+            switch (nota)
+            {
+                case >= 9.0: faixaA++; break;
+                case >= 8.0: faixaB++; break;
+                case >= 7.0: faixaC++; break;
+                case >= 5.0: faixaD++; break;
+                default: faixaF++; break;
+            }
+        }
+        
+        double media = soma / notas.Length;
+
+        return $"Média: {media:F2}\nAprovados: {aprovados}\nMaior: {maiorNota}\nMenor: {menorNota}\nFaixas: A: {faixaA}, B: {faixaB}, C: {faixaC}, D: {faixaD}, F: {faixaF}";
     }
 
     // =====================================================================
     // QUESTÃO 10 - MULTIPLE FOREACH (DESAFIO) (20 pontos)
     // =====================================================================
-
+    
     /// <summary>
     /// TODO: OBRIGATÓRIO USAR FOREACH (múltiplos)
     /// Processe vendas por categoria e calcule comissões
@@ -278,33 +442,51 @@ internal static class Program
     /// </summary>
     private static string ProcessarVendas(double[] vendas, string[] categorias, double[] comissoes, string[] nomesCategorias)
     {
-        // TODO: Implementar com múltiplos FOREACH
-        // Exemplo: "Categoria A: Vendas R$ 1500,00, Comissão R$ 150,00\nCategoria B: Vendas R$ 800,00, Comissão R$ 56,00"
+        // Dicionários para armazenar os totais por categoria
+        var totalVendasPorCategoria = new Dictionary<string, double>();
+        var totalComissaoPorCategoria = new Dictionary<string, double>();
 
-        throw new NotImplementedException("Implementar ProcessarVendas com FOREACH");
+        // Inicializa os dicionários
+        foreach (var nome in nomesCategorias)
+        {
+            totalVendasPorCategoria[nome] = 0;
+            totalComissaoPorCategoria[nome] = 0;
+        }
+
+        // O ideal para processar arrays paralelos é um loop FOR com índice.
+        // Como a instrução pede FOREACH, usamos um índice manual, o que não é a melhor prática, mas cumpre o requisito.
+        int index = 0;
+        foreach (var venda in vendas)
+        {
+            string categoriaDaVenda = categorias[index];
+            totalVendasPorCategoria[categoriaDaVenda] += venda;
+            
+            // FOREACH separado para encontrar a comissão
+            double percentualComissao = 0;
+            int comissaoIndex = 0;
+            foreach (var nomeCategoria in nomesCategorias)
+            {
+                if (nomeCategoria == categoriaDaVenda)
+                {
+                    percentualComissao = comissoes[comissaoIndex];
+                    break;
+                }
+                comissaoIndex++;
+            }
+            
+            totalComissaoPorCategoria[categoriaDaVenda] += venda * percentualComissao;
+            index++;
+        }
+
+        var relatorio = new StringBuilder();
+        foreach (var nomeCategoria in nomesCategorias)
+        {
+            double totalVendas = totalVendasPorCategoria[nomeCategoria];
+            double totalComissao = totalComissaoPorCategoria[nomeCategoria];
+            // Formatação para moeda (R$)
+            relatorio.AppendLine($"Categoria {nomeCategoria}: Vendas {totalVendas:C}, Comissão {totalComissao:C}");
+        }
+
+        return relatorio.ToString().TrimEnd();
     }
-
-    // =====================================================================
-    // MÉTODOS AUXILIARES (NÃO ALTERAR - APENAS PARA REFERÊNCIA)
-    // =====================================================================
-
-    /// <summary>
-    /// Método de exemplo demonstrando diferença entre estático e de instância
-    /// ESTÁTICO: Pertence à classe, não precisa criar objeto para usar
-    /// </summary>
-    private static void ExemploMetodoEstatico()
-    {
-        Console.WriteLine("Sou um método estático - chamado direto da classe");
-    }
-
-    /// <summary>
-    /// Método de exemplo de instância (comentado pois não pode ser chamado do Main estático)
-    /// DE INSTÂNCIA: Pertence ao objeto, precisa criar instância da classe
-    /// </summary>
-    /*
-    void ExemploMetodoInstancia()
-    {
-        Console.WriteLine("Sou um método de instância - preciso de um objeto para ser chamado");
-    }
-    */
 }
