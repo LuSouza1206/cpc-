@@ -9,7 +9,7 @@ internal static class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("=== CHECKPOINT 1 - FUNDAMENTOS C# - Turma 3ESPY ===\n");
+        Console.WriteLine("=== CHECKPOINT 1 - FUNDAMENTOS C# - Turma 3ESPR ===\n");
 
         // ENTREGA ATÉ DIA 08/09 AS 23:59
         // Você deve criar um repositório público ou branch no github e me enviar o link pelo
